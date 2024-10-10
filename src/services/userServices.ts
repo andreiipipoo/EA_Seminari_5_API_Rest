@@ -17,5 +17,13 @@ export const getEntries = {
     },
     delete: async(id:string)=>{
         return await usersofDB.findByIdAndDelete(id);
+    },
+
+    //Afegim aquestes dues funcions per a poder afegir i eliminar experiències a un usuari
+    addExperiencies: async(idUser:string,idExp:string)=>{
+        return await usersofDB.findByIdAndUpdate(idUser,{ $addToSet:{ experiencies: idExp } });
+    },
+    deleteExperiencies: async(idUser:string,idExp:string)=>{
+        return await usersofDB.findByIdAndDelete(idUser,{ $pull:{ experiencies: idExp } });
     }
 }

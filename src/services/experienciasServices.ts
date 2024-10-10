@@ -13,9 +13,12 @@ export const getEntries = {
     addParticipant: async(idExp:string,idPart:string)=>{
         return await experienciasofDB.findByIdAndUpdate(idExp,{$addToSet:{participants:idPart}});
     },
+
+    //Canviat el findUserById per a que faci un delete de l'usuari de la llista de participants
     delParticipant: async(idExp:string,idPart:string)=>{
-        return await experienciasofDB.findByIdAndUpdate(idExp,{$pull:{participants:idPart}});
+        return await experienciasofDB.findByIdAndDelete(idExp,{$pull:{participants:idPart}});
     },
+    
     create: async(entry:object)=>{
         return await experienciasofDB.create(entry);
     },
@@ -25,5 +28,5 @@ export const getEntries = {
     },
     delete: async(id:string)=>{
         return await experienciasofDB.findByIdAndDelete(id);
-    }
+    },
 }

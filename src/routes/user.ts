@@ -20,6 +20,19 @@ router.post('/', async(req, res) => {
     return res.json(data);
 })
 
+//Hem afegit aquesta ruta per a poder afegir experiencies a un usuari
+
+router.post('/addExperiencias/:idUser/:idExp', async(req, res) => {
+    const data = await userServices.getEntries.addExperiencies(req.params.idUser,req.params.idExp)
+    return res.json(data);
+})
+
+// Hem afegit aquesta ruta per a poder eliminar participant d'una experiència
+router.post('/delParticipant/:idUser/:idExp', async(req, res) => {
+    const data = await userServices.getEntries.deleteExperiencies(req.params.idUser,req.params.idExp)
+    return res.json(data);
+})
+
 router.put('/:id', async(req, res) => {
     const data = await userServices.getEntries.update(req.params.id,req.body)
     return res.json(data);
