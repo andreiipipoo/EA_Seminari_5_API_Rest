@@ -28,7 +28,7 @@ router.post('/addExperiencias/:idUser/:idExp', async(req, res) => {
 })
 
 // Hem afegit aquesta ruta per a poder eliminar participant d'una experiència
-router.post('/delParticipant/:idUser/:idExp', async(req, res) => {
+router.delete('/delParticipant/:idUser/:idExp', async(req, res) => {
     const data = await userServices.getEntries.deleteExperiencies(req.params.idUser,req.params.idExp)
     return res.json(data);
 })

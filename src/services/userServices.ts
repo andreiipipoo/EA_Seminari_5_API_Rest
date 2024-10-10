@@ -24,6 +24,6 @@ export const getEntries = {
         return await usersofDB.findByIdAndUpdate(idUser,{ $addToSet:{ experiencies: idExp } });
     },
     deleteExperiencies: async(idUser:string,idExp:string)=>{
-        return await usersofDB.findByIdAndDelete(idUser,{ $pull:{ experiencies: idExp } });
+        return await usersofDB.findByIdAndUpdate(idUser,{ $pull:{ experiencies: idExp } });
     }
 }
